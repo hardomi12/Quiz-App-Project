@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!--FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Geist:wght@100..900&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+
+    <title>Which Texas Bird Are You?</title>
+    <style>
+        /* Apply a base font for better consistency */
+        body {
+            font-family: "League Spartan", sans-serif;
+            font-size: large;
+        }
+
+        .question-block {
+            margin-bottom: 2rem;
+        }
+
+        h2, h4 {
+            font-family: "Gabarito", Verdana, Tahoma, sans-serif;
+        }
+        
+        h4{
+           color:rgb(94, 146, 70);
+        }
+
+        .display-4{
+            font-family: "Geist", Verdana, Tahoma, sans-serif;
+        }
+
+        /*coloring submit and reset buttons */
+        .btn-primary {
+            background-color: rgb(94, 146, 70);
+            --bs-btn-bg: rgb(94, 146, 70);
+            --bs-btn-border-color:rgb(94, 146, 70);
+        
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: rgb(160, 200, 125);
+            --bs-btn-hover-border-color: rgb(160, 200, 125);
+        
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: rgb(224, 239, 152);
+            --bs-btn-active-border-color:rgb(224, 239, 152);
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+ 
+        }
+
+        .btn-secondary {
+             background-color: rgb(187, 194, 139);
+            --bs-btn-bg: rgb(187, 194, 139);
+            --bs-btn-border-color:rgb(187, 194, 139);
+
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: rgb(198, 215, 148);
+            --bs-btn-hover-border-color: rgb(198, 215, 148);
+        
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: rgb(201, 232, 150);
+            --bs-btn-active-border-color:rgb(201, 232, 150);
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    
+        }
+
+        .form-check-input:checked {
+            background-color: #f5c99d;
+            border-color: #f5c99d;
+            
+       }
+
+        .form-check-input:focus {
+            border-color: rgb(237, 185, 108);
+            box-shadow: 0 0 0 0.25rem rgba(253, 126, 20, 0.25); /* Custom orange focus ring */
+        }
+        
+        /* Animation for the result area */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in-result {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        /* Style for the bird's name in the result */
+        /*Made the color a orange since there's a little orange in the theme I really hope it doesnt come off as confusing with names like "blue jay"*/
+        .result-bird-name {
+            color: rgb(237, 185, 108); 
+        }
+    </style>
+</head>
+<body style="background-color: #ffffff;">
+    <!-- START INTRO JUMBOTRON -->
+    <div id="home" class="container-fluid p-5" style="background-color: rgb(216, 230, 211);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h1 class="display-4 fw-bold">Which Texas Bird Are You?</h1>
+                    <p class="fs-5 text-muted">Have you ever taken time to watch a wild bird and notice its unique behaviors? While the thousands of bird species on our planet have different habits regarding nesting, socializing, and feeding, some bird habits seem to parallel our own human behavior. In this short quiz, answer the questions to find out what bird corresponds with your personality. </p>
+                </div>
+                <div class="col-md-5">
+                    <img src="birdvisual1.png" class="img-fluid rounded" alt="A collage of Texas birds.">
+                    <h6 class="small text-muted pt-1" style="opacity: .50;">Photos sourced from Pexels and Unsplash</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN QUIZ SECTION -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- Begin form -->
+                <form id="quiz-form" novalidate>
+
+                    <!-- q1 -->
+                    <div class="question-block">
+                        <h4 class="mb-3">1. Which describes your favorite color?</h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" id="q1a1" value="Northern Cardinal" required>
+                            <label class="form-check-label" for="q1a1">I like warm colors (reds, oranges, yellows)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" id="q1a2" value="Blue Jay">
+                            <label class="form-check-label" for="q1a2">I like cool colors (greens, blues, purples)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" id="q1a3" value="Mourning Dove">
+                            <label class="form-check-label" for="q1a3">I prefer dull/neutral colors</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" id="q1a4" value="Painted Bunting">
+                            <label class="form-check-label" for="q1a4">There's too many colors to choose!</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" id="q1a5" value="Northern Mockingbird">
+                            <label class="form-check-label" for="q1a5">I'll sport whatever color is trending </label>
+                        </div>
+                    </div>
+
+                    <!-- q2 -->
+                    <div class="question-block">
+                        <h4 class="mb-3">2. What season and aesthetic pairing do you like best?</h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" id="q2a1" value="Painted Bunting" required>
+                            <label class="form-check-label" for="q2a1">Spring: bright colors, new beginnings, blooming flowers</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" id="q2a2" value="Blue Jay">
+                            <label class="form-check-label" for="q2a2">Summer: sunny days, social events with friends</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" id="q2a3" value="Mourning Dove">
+                            <label class="form-check-label" for="q2a3">Fall: cool weather, calm evenings, spending time with loved ones</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" id="q2a4" value="Northern Cardinal">
+                            <label class="form-check-label" for="q2a4">Winter: snow and wind, festive holidays, staying warm inside</label>
+                        </div>
+                    </div>
+                    
+                    <!-- q3 -->
+                    <div class="question-block">
+                        <h4 class="mb-3">3. Pick a snack to eat.</h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="q3a1" value="Northern Cardinal" required>
+                            <label class="form-check-label" for="q3a1">Fresh berries</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="q3a2" value="Mourning Dove">
+                            <label class="form-check-label" for="q3a2">A variety of flower seeds</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="q3a3" value="Northern Mockingbird">
+                            <label class="form-check-label" for="q3a3">I'll have whatever everyone else is having</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="q3a4" value="Painted Bunting">
+                            <label class="form-check-label" for="q3a4">A little of everything</label>
+                        </div>
+                         <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="q3a5" value="Blue Jay">
+                            <label class="form-check-label" for="q3a5">A nutritious helping of bugs</label>
+                        </div>
+                    </div>
+
+                    <!-- q4 -->
+                    <div class="question-block">
+                        <h4 class="mb-3">4. Which kind of Texas outdoor scenery do you prefer?</h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="q4a1" value="Northern Cardinal" required>
+                            <label class="form-check-label" for="q4a1">A cozy thicket near a bird feeder</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="q4a2" value="Northern Mockingbird">
+                            <label class="form-check-label" for="q4a2">An urban street with greenery</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="q4a3" value="Painted Bunting">
+                            <label class="form-check-label" for="q4a3">A low, scrubby thicket with plenty of cover</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="q4a4" value="Blue Jay">
+                            <label class="form-check-label" for="q4a4">A shady forest with lots of shrubbery</label>
+                        </div>
+                         <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="q4a5" value="Mourning Dove">
+                            <label class="form-check-label" for="q4a5">A quiet suburban backyard</label>
+                        </div>
+                    </div>
+
+                    <!-- q5 -->
+                    <div class="question-block">
+                        <h4 class="mb-3">5. How do you react when challenged?</h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="q5a1" value="Mourning Dove" required>
+                            <label class="form-check-label" for="q5a1">I try to avoid conflict at all costs</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="q5a2" value="Blue Jay">
+                            <label class="form-check-label" for="q5a2">I'll fight back!</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="q5a3" value="Painted Bunting">
+                            <label class="form-check-label" for="q5a3">I am willing to stand up for others</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="q5a4" value="Northern Cardinal">
+                            <label class="form-check-label" for="q5a4">I'm usually the one starting a fight</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="q5a5" value="Northern Mockingbird">
+                            <label class="form-check-label" for="q5a5">I'm vocal about my stance</label>
+                        </div>
+                    </div>
+
+                    <!-- q6 -->
+                    <div class="question-block">
+                        <h4 class="mb-3">6. How do you meet new people?</h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="q6a1" value="Northern Cardinal" required>
+                            <label class="form-check-label" for="q6a1">I'm the first to make an impression</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="q6a2" value="Mourning Dove">
+                            <label class="form-check-label" for="q6a2">I typically let people come to me</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="q6a3" value="Blue Jay">
+                            <label class="form-check-label" for="q6a3">I try to strike up a conversation</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="q6a4" value="Painted Bunting">
+                            <label class="form-check-label" for="q6a4">I tend to avoid new people</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="q6a5" value="Northern Mockingbird">
+                            <label class="form-check-label" for="q6a5">I follow the other person's lead</label>
+                        </div>
+                    </div>
+
+                    <!-- q7 -->
+                    <div class="question-block">
+                        <h4 class="mb-3">7. Choose a trait that most accurately describes you.</h4>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q7" id="q7a1" value="Blue Jay" required>
+                            <label class="form-check-label" for="q7a1">Intelligent and proficient</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q7" id="q7a2" value="Mourning Dove">
+                            <label class="form-check-label" for="q7a2">Calm and reliable</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q7" id="q7a3" value="Northern Mockingbird">
+                            <label class="form-check-label" for="q7a3">Socialable and chatty</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q7" id="q7a4" value="Painted Bunting">
+                            <label class="form-check-label" for="q7a4">Flashy and admirable</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q7" id="q7a5" value="Northern Cardinal">
+                            <label class="form-check-label" for="q7a5">Outspoken and confident</label>
+                        </div>
+                    </div>
+                    
+                    <div class="px-3 pt-1">
+                         <button type="submit" class="btn btn-primary mx-1">Submit</button>
+                         <button type="button" id="reset-btn" class="btn btn-secondary mx-1">Reset</button>
+                    </div>
+                    
+                    <!-- Error message area -->
+                    <div id="error-message" class="alert alert-danger mt-3 d-none" role="alert">
+                      Please answer all questions before submitting.
+                    </div>
+                   
+                </form>
+                <!-- end form -->
+                
+                <!-- Result Area -->
+                <div id="result-area" class="mt-5 text-center" style="display: none;">
+                    <img id="result-image" class="img-fluid rounded my-3" src="" alt="Your result bird" style="width: 50%">
+                    <p id="result-caption" class="small muted" style="  opacity: 0.5; font-style: italic; "></p>
+                    <h2 id="result-title"></h2>
+                    <p id="result-text" class="fs-5"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--FOOTER WITH DISCLAIMER-->
+    <footer id="footer" class="container-fluid p-4 pb-2" style="background-color: rgb(216, 230, 211);">
+        <div class="container">
+            <div class="row">
+                <p class="fs-6 small text-muted text-center" style="opacity: 0.5;">This website is for educational purposes only. </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const quizForm = document.getElementById("quiz-form");
+        const resultArea = document.getElementById("result-area");
+        const errorMessage = document.getElementById("error-message");
+
+        // Define the results for each bird
+        const birdResults = {
+            "Mourning Dove": {
+                title: "You are a <span class='result-bird-name'>Mourning Dove!</span>",
+                text: "You are gentle, peaceful, and prefer a calm lifestyle.",
+                image: "mdove.jpg",
+                alt: "A Mourning Dove",
+                caption: "Photo by Joshua J. Cotten on Unsplash"
+            },
+            "Northern Cardinal": {
+                title: "You are a <span class='result-bird-name'>Northern Cardinal!</span>",
+                text: "You are vibrant, confident, and a standout in any crowd.",
+                image: "ncardinal.jpg",
+                alt: "A Northern Cardinal",
+                caption: "Photo by Joshua J. Cotten on Unsplash"
+            },
+            "Blue Jay": {
+                title: "You are a <span class='result-bird-name'>Blue Jay!</span>",
+                text: "You are smart, social, and a great communicator.",
+                image: "bjay.jpg",
+                alt: "A Blue Jay",
+                caption: "Photo by Jay Brand on Pexels"
+            },
+            "Painted Bunting": {
+                title: "You are a <span class='result-bird-name'>Painted Bunting!</span>",    
+                text: "You are bold, loyal, and authentic.",
+                image: "pbunting.jpg",
+                alt: "A Painted Bunting",
+                caption: "Photo by Joshua J. Cotten on Unsplash"
+            },
+            "Northern Mockingbird": {
+                title: "You are a <span class='result-bird-name'>Northern Mockingbird!</span>",
+                text: "You are versatile, talented, and not afraid to make your voice heard.",
+                image: "nmocking.jpg",
+                alt: "A Northern Mockingbird",
+                caption: "Photo by Nathan Rostampour on Pexels"
+            }
+        };
+
+        quizForm.addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            
+            const scores = {
+                "Mourning Dove": 0, "Northern Cardinal": 0, "Blue Jay": 0,
+                "Painted Bunting": 0, "Northern Mockingbird": 0
+            };
+            
+            let firstUnanswered = null;
+
+            // Loop through all questions to tally scores and check for unanswered questions
+            for(let i = 1; i <= 7; i++) {
+                const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedAnswer) {
+                    const bird = selectedAnswer.value;
+                    scores[bird]++;
+                } else {
+                    // If we find an unanswered question, store a reference to it
+                    if (!firstUnanswered) {
+                      firstUnanswered = document.querySelector(`input[name="q${i}"]`).closest('.question-block');
+                    }
+                }
+            }
+
+            // If any question was left unanswered, show the error and stop.
+            if(firstUnanswered) {
+                errorMessage.classList.remove('d-none');
+                firstUnanswered.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
+            // If all is well, hide the error message
+            errorMessage.classList.add('d-none');
+            
+            // Find the highest score
+            const maxScore = Math.max(...Object.values(scores));
+            
+            // Find all birds that share the highest score
+            const tiedBirds = Object.keys(scores).filter(bird => scores[bird] === maxScore);
+            
+            // Select the final result, picking randomly if there's a tie
+            const resultBird = tiedBirds.length > 1 
+                ? tiedBirds[Math.floor(Math.random() * tiedBirds.length)] 
+                : tiedBirds[0];
+            
+            // Display the final result
+            const resultData = birdResults[resultBird];
+            document.getElementById("result-title").innerHTML = resultData.title;
+            document.getElementById("result-text").innerHTML = resultData.text;
+            document.getElementById("result-image").src = resultData.image;
+            document.getElementById("result-image").alt = resultData.alt;
+            document.getElementById("result-caption").innerHTML = resultData.caption;
+
+            // Animate and show the result area
+            resultArea.style.display = 'block';
+            resultArea.classList.add('fade-in-result');
+            resultArea.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById("reset-btn").addEventListener("click", function() {
+            quizForm.reset();
+            resultArea.style.display = 'none';
+            resultArea.classList.remove('fade-in-result'); // Reset animation
+            errorMessage.classList.add('d-none');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
+
